@@ -1,0 +1,32 @@
+{
+  "name": "consul",
+  "version": "0.0.1",
+  "description": "Client library for consul",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gjohnson/consul-node.git"
+  },
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "keywords": [
+    "consul"
+  ],
+  "author": "Garrett Johnson",
+  "license": "MIT",
+  "dependencies": {
+    "defaults": "1.0.0",
+    "is-type": "0.0.1",
+    "request": "2.34.0",
+    "to-camel-case": "0.2.1"
+  },
+  "devDependencies": {
+    "mocha": "1.18.2",
+    "should": "3.3.1"
+  }
+}
