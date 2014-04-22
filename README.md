@@ -9,6 +9,12 @@ This module attempts to be "low level" and follows consul's API pretty closely, 
 
 This not stable because is still being developed, feel free to help out!
 
+## Install
+
+```sh
+$ npm install consul-node
+```
+
 ## Configure
 
 The following options can be passed to the `Consul` constructor.
@@ -19,7 +25,7 @@ The following options can be passed to the `Consul` constructor.
   - `strict` -- Treat HTTP 404's as errors (defaults to `false`).
 
 ```js
-var Consul = require('consul');
+var Consul = require('consul-node');
 
 var consul = new Consul({
   host: 'localhost',

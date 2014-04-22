@@ -1,5 +1,5 @@
 {
-  "name": "consul",
+  "name": "consul-node",
   "version": "0.0.1",
   "description": "Client library for consul",
   "repository": {
