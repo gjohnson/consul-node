@@ -33,6 +33,26 @@ var consul = new Consul({
 });
 ```
 
+## General
+
+Basically all calls support passing an optional parameter before the callback. This parameter is useful when wanting to pass query string parameters to the calls.
+
+For example, this can be used to filter the services returned by the health endpoint.
+
+```js
+// Get all nodes having the 'myservice' service
+consul.health.service('myservice', function (err, nodes) {
+    if (err) return console.error(err.stack);
+    console.log('nodes -- %j', nodes);
+});
+
+// Get all healthy ('passing') nodes having the 'myservice' service
+consul.health.service('myservice', {passing: 1 }, function (err, nodes) {
+    if (err) return console.error(err.stack);
+    console.log('nodes -- %j', nodes);
+});
+```
+
 ## KV API
 
 Implements the [KV](http://www.consul.io/docs/agent/http.html#toc_2) endpoints.
@@ -84,7 +104,20 @@ Implements the [agent](http://www.consul.io/docs/agent/http.html#toc_3) endpoint
   - consul.agent.services(callback)
   - consul.agent.members(callback)
 
-TODO: everything else...
+Implemented but not yet covered by tests:
+
+ - consul.agent.join(address, callback)
+ - consul.agent.forceLeave(node, callback)
+ - consul.agent.registerCheck(check, callback)
+ - consul.agent.deregisterCheck(checkId, callback)
+ - consul.agent.passCheck(checkId, callback)
+ - consul.agent.warnCheck(checkId, callback)
+ - consul.agent.failCheck(checkId, callback)
+ - consul.agent.registerService(service, callback)
+ - consul.agent.deregisterService(serviceId, callback)
+
+
+TODO: Implement tests for the remaining calls.
 
 ```js
 var consul = new Consul();
@@ -109,11 +142,33 @@ consul.agent.members(function (err, members) {
 
 Implements the [catalog](http://www.consul.io/docs/agent/http.html#toc_16) endpoints.
 
-TODO: everything...
+Currently implemented:
+
+ - consul.catalog.service(serviceName, callback)
+
+TODO: Implement the remaining calls.
 
 ### Health API
 
 Implements the [health](http://www.consul.io/docs/agent/http.html#toc_24) endpoints.
 
-TODO: everything...
+ - node(node, callback)
+ - checks(serviceName, callback)
+ - service(serviceName, opts, callback)
+ - state(state, callback)
 
+The opts parameter can be used for filtering. Set it to ``{passing: 1}`` to add a query parameter to the request,
+which causes the Consul HTTP API to only return service nodes with passing checks.
+
+## Running tests
+
+To run the tests, you have to have the Consul agent running locally.
+
+Start the agent using:
+
+```
+// From the consul-node root folder
+$ consul agent -config-dir=./test/config/consul.d
+```
+
+Then execute the tests using ``npm test``.
