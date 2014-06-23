@@ -2,7 +2,7 @@
 var Consul = require('..');
 var assert = require('assert');
 
-describe.only('consul.kv', function () {
+describe('consul.kv', function () {
 
   describe('#get', function () {
     describe('when not in "strict mode"', function () {
