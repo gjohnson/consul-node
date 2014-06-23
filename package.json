@@ -1,6 +1,6 @@
 {
   "name": "consul-node",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Client library for consul",
   "repository": {
     "type": "git",
