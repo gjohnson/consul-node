@@ -20,7 +20,7 @@
   "author": "Garrett Johnson",
   "license": "MIT",
   "dependencies": {
-    "debug": "^1.0.2",
+    "debug": "1.0.2",
     "defaults": "1.0.0",
     "is-type": "0.0.1",
     "request": "2.34.0",
