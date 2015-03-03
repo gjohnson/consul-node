@@ -19,7 +19,7 @@ $ npm install consul-node
 
 The following options can be passed to the `Consul` constructor.
 
-  - `host` -- The consul agent's host (defaults to `localhost`).
+  - `hostname` -- The consul agent's hostname (defaults to `localhost`).
   - `port` -- The consul agent's port (defaults to `8500`).
   - `secure` -- Use https when talking to the agent (defaults to `false`).
   - `strict` -- Treat HTTP 404's as errors (defaults to `false`).
@@ -28,7 +28,7 @@ The following options can be passed to the `Consul` constructor.
 var Consul = require('consul-node');
 
 var consul = new Consul({
-  host: 'localhost',
+  hostname: 'localhost',
   port: 8300,
 });
 ```
